@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 
 export function Project() {
+  // url => /projects/:projectId
   const { projectId } = useParams();
+  const [URLSearchParams, setURLSearchParams] = useSearchParams();
   const [project, setProject] = useState<{ name: string } | null>(null);
 
   console.log(projectId);
+  console.log(URLSearchParams.get("title"));
 
   useEffect(() => {
     fetch(`https://jsonplaceholder.typicode.com/users/${projectId}`)
@@ -14,6 +17,7 @@ export function Project() {
       .catch((error) => {
         throw new Error(error);
       });
+    setURLSearchParams({ title: "hello" });
   }, []);
 
   return (
