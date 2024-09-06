@@ -1,3 +1,15 @@
+import { useState } from "react";
+
 export function About() {
-  return <div>About</div>;
+  const [value, setValue] = useState<string>("");
+  return (
+    <div>
+      About
+      <input
+        type="text"
+        value={value}
+        onChange={(event) => setValue(event.target.value)}
+      />
+    </div>
+  );
 }

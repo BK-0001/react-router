@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export function Project() {
   const { projectId } = useParams();
@@ -19,6 +19,8 @@ export function Project() {
   return (
     <div>
       <h1>Project {projectId}</h1>
+
+      <Link to={`/projects/${projectId}/edit`}>Edit</Link>
 
       {project && <p>{project.name}</p>}
     </div>
